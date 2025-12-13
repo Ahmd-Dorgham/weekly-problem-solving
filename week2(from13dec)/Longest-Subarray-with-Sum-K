@@ -1,4 +1,5 @@
 //https://www.geeksforgeeks.org/problems/longest-sub-array-with-sum-k0809/1
+// for positives and negatives
 class Solution {
   public:
     int longestSubarray(vector<int>& arr, int k) {
@@ -34,3 +35,30 @@ class Solution {
         return maxL;
     }
 };
+
+//for positives and zeros only 
+int longestSubarrayWithSumK(vector<int> a, long long k)
+{
+    int i=0,j=0;
+    long long sum=0;
+    int maxLen=0;
+    int n=a.size();
+
+    for(j;j<n;j++)
+    {
+        sum+=a[j];
+
+        if(sum==k)
+        {
+            maxLen=max(maxLen,j-i+1);
+
+        }
+
+        while(sum>k)
+        {
+            sum=sum-a[i];
+            i++;
+        }
+    }
+    return maxLen;
+}
