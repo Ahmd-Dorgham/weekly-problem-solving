@@ -1,0 +1,43 @@
+//https://leetcode.com/problems/sort-colors/description/
+class Solution {
+public:
+    void sortColors(vector<int>& nums) {
+
+        int cZeros=0;
+        int cOnes=0;
+        int cTwos=0;
+        int n=nums.size();
+
+        for(int i=0;i<n;i++)
+        {
+            if(nums[i]==0)
+            {
+                cZeros++;
+            }
+            else if(nums[i]==1)
+            {
+                cOnes++;
+            }
+            else {
+                cTwos++;
+            }
+        }
+        int i=0;
+        while(cZeros--)
+        {
+            nums[i]=0;
+            i++;
+        }
+        while(cOnes--)
+        {
+            nums[i]=1;
+            i++;
+        }
+        while(cTwos--)
+        {
+            nums[i]=2;
+            i++;
+        }
+
+    }
+};
