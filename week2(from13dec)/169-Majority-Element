@@ -18,28 +18,46 @@ public:
     }
 };
 //Boyer–Moore Majority Vote
-int majorityElement(vector<int>& nums) {
+int majorityElement(vector<int>& nums)
+{
 
     int n=nums.size();
     int el=nums[0];
     int countt=1;
 
-    for(int i=1;i<n;i++)
+    for(int i=1; i<n; i++)
     {
         if(nums[i]==el)
         {
             countt++;
         }
+        else if(countt==0)
+        {
+            el=nums[i];
+            countt=1;
+        }
         else
         {
             countt--;
-            if(countt==-1)
-            {
-                el=nums[i];
-                countt=1;
-            }
         }
-    }
-    return el;
 
     }
+
+    int freq=0;
+
+    for(int i=0; i<n; i++)
+    {
+        if(nums[i]==el)
+        {
+            freq++;
+        }
+    }
+    if(freq>n/2)
+    {
+        return el;
+    }
+    else
+        return -1;
+
+
+}
