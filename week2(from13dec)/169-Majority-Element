@@ -17,3 +17,29 @@ public:
     return 0;
     }
 };
+//Boyer–Moore Majority Vote
+int majorityElement(vector<int>& nums) {
+
+    int n=nums.size();
+    int el=nums[0];
+    int countt=1;
+
+    for(int i=1;i<n;i++)
+    {
+        if(nums[i]==el)
+        {
+            countt++;
+        }
+        else
+        {
+            countt--;
+            if(countt==-1)
+            {
+                el=nums[i];
+                countt=1;
+            }
+        }
+    }
+    return el;
+
+    }
